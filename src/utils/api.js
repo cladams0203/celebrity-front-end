@@ -1,11 +1,12 @@
 import axios from 'axios'
 
 export default function api(){
-    axios.create({
-        baseURL: 'https://celebrity-dead.herokuapp.com',
-        headers: {
-            authorization: localStorage.getItem('token'),
-            contentType: 'application/json'
-        }
+    const token = localStorage.getItem('token')
+    return axios.create({
+            baseURL: 'https://celebrity-dead.herokuapp.com/api',
+            headers: {
+            'Authorization': `${token}`,
+            'Content-Type': 'application/json'
+            }
     })
 }
